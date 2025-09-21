@@ -107,9 +107,9 @@ _archive_sig_sum="c83ba046990b5defa157c8bfec7b5a2b1b689e1e0422f66de7719c4b2cce7c
 _evmfs_ns="0x87003Bd6C074C713783df04f36517451fF34CBEf"
 _tarname="${_pkg}-${pkgver}"
 if [[ "${_evmfs}" == "true" ]]; then
-  _tag="${pkgver}"
-elif [[ "${_git}" == "false" ]]; then
   _tag="${_commit}"
+elif [[ "${_git}" == "false" ]]; then
+  _tag="${pkgver}"
 fi
 _url="${url}"
 _evmfs_network="100"
