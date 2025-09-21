@@ -149,7 +149,7 @@ package_mkaudiocdrimg() {
   cd \
     "${_tarname}"
   _make_opts=(
-    DESTDIR="${pkgver}"
+    DESTDIR="${pkgdir}"
   )
   make \
     "${_make_opts[@]}" \
