@@ -102,8 +102,8 @@ conflicts=(
 license=(
   "AGPL3"
 )
-_archive_sum="e520e94e5cc50ac956db0ab60cbf030114ffda123811393586c601b062df318f"
-_archive_sig_sum="c83ba046990b5defa157c8bfec7b5a2b1b689e1e0422f66de7719c4b2cce7c0d"
+_archive_sum="08ef52d93bfe6c8718adfdc9350b3ba686a684771dd47823256696e657e05c72"
+_archive_sig_sum="54dbf23ad02f5e9e9a981366f232fbbde72c88e8bdf688ec96b5d32a0ec0544a"
 _evmfs_ns="0x87003Bd6C074C713783df04f36517451fF34CBEf"
 if [[ "${_evmfs}" == "true" ]]; then
   _tag="${_commit}"
