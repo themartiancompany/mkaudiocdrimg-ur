@@ -61,7 +61,7 @@ pkgname=(
   "${_pkg}"
 )
 pkgver=1.2.3
-_commit="24c7ad190208dd48360f42398182d7c6b24ff046"
+_commit="ebb6be35d133b071338a60a12b7c90eb28fe984b"
 pkgrel=1
 _pkgdesc=(
   "Make an audio CD-R image"
