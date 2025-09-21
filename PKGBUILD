@@ -105,12 +105,12 @@ license=(
 _archive_sum="e520e94e5cc50ac956db0ab60cbf030114ffda123811393586c601b062df318f"
 _archive_sig_sum="c83ba046990b5defa157c8bfec7b5a2b1b689e1e0422f66de7719c4b2cce7c0d"
 _evmfs_ns="0x87003Bd6C074C713783df04f36517451fF34CBEf"
-_tarname="${_pkg}-${pkgver}"
 if [[ "${_evmfs}" == "true" ]]; then
   _tag="${_commit}"
 elif [[ "${_git}" == "false" ]]; then
   _tag="${pkgver}"
 fi
+_tarname="${_pkg}-${_tag}"
 _url="${url}"
 _evmfs_network="100"
 _evmfs_address="0x69470b18f8b8b5f92b48f6199dcb147b4be96571"
