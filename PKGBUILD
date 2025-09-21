@@ -19,10 +19,14 @@
 #    You should have received a copy of the GNU Affero General Public License
 #    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-# Maintainer: Truocolo <truocolo@aol.com>
-# Maintainer: Truocolo <truocolo@0x6E5163fC4BFc1511Dbe06bB605cc14a3e462332b>
-# Maintainer: Pellegrino Prevete (dvorak) <pellegrinoprevete@gmail.com>
-# Maintainer: Pellegrino Prevete (dvorak) <dvorak@0x87003Bd6C074C713783df04f36517451fF34CBEf>
+# Maintainer:
+#   Truocolo
+#     <truocolo@aol.com>
+#     <truocolo@0x6E5163fC4BFc1511Dbe06bB605cc14a3e462332b>
+# Maintainer:
+#   Pellegrino Prevete (dvorak)
+#     <pellegrinoprevete@gmail.com>
+#     <dvorak@0x87003Bd6C074C713783df04f36517451fF34CBEf>
 
 # shellcheck disable=SC2034
 _evmfs_available="$( \
@@ -56,7 +60,8 @@ pkgbase="${_pkg}"
 pkgname=(
   "${_pkg}"
 )
-pkgver=1.2.1
+pkgver=1.2.3
+_commit="24c7ad190208dd48360f42398182d7c6b24ff046"
 pkgrel=1
 _pkgdesc=(
   "Make an audio CD-R image"
@@ -91,25 +96,26 @@ fi
 provides=(
   "${_py}-${_pkg}=${pkgver}"
 )
-
 conflicts=(
   "${_py}-${_pkg}"
 )
 license=(
   "AGPL3"
 )
+_archive_sum="e520e94e5cc50ac956db0ab60cbf030114ffda123811393586c601b062df318f"
+_archive_sig_sum="c83ba046990b5defa157c8bfec7b5a2b1b689e1e0422f66de7719c4b2cce7c0d"
+_evmfs_ns="0x87003Bd6C074C713783df04f36517451fF34CBEf"
 _tarname="${_pkg}-${pkgver}"
 _url="${url}"
 _evmfs_network="100"
 _evmfs_address="0x69470b18f8b8b5f92b48f6199dcb147b4be96571"
-_evmfs_ns="0x87003Bd6C074C713783df04f36517451fF34CBEf"
-_archive_sum='7a55511d466126a07ac33ac26b6fd3c82bef9ff5016d48dbb66d6522e9e0d489'
 _evmfs_archive_uri="evmfs://${_evmfs_network}/${_evmfs_address}/${_evmfs_ns}/${_archive_sum}"
 _evmfs_archive_src="${_tarname}.zip::${_evmfs_archive_uri}"
-_archive_sig_sum="1b77bbebc4e78b4a72891c0f4b56e66d115bcdf6c07484707d7f827a4c2c8443"
 _archive_sig_uri="evmfs://${_evmfs_network}/${_evmfs_address}/${_evmfs_ns}/${_archive_sig_sum}"
 _archive_sig_src="${_tarname}.zip.sig::${_archive_sig_uri}"
 if [[ "${_evmfs}" == "true" ]]; then
+  _src="${_evmfs_archive_src}"
+  _sum="${_archive_sum}"
   makedepends+=(
     "evmfs"
   )
@@ -123,20 +129,27 @@ if [[ "${_evmfs}" == "true" ]]; then
 elif [[ "${_git}" == "true" ]]; then
   _uri="git+${_url}#tag=${pkgver}"
   _src="${_tarname}::${_uri}"
+  _sum="SKIP"
 fi
 source=(
   "${_src}"
 )
 sha256sums=(
-  "SKIP"
+  "${_sum}"
 )
 
 package_mkaudiocdrimg() {
+  local \
+    _make_opts=()
   cd \
     "${_tarname}"
-  "${_py}" \
-    "setup.py" \
-      install \
-        --root="${pkgdir}" \
-	--optimize=1
+  _make_opts=(
+    DESTDIR="${pkgver}"
+  )
+  make \
+    install
+  install \
+    -vDm644 \
+    "COPYING" \
+    "${pkgdir}/usr/share/licenses/${pkgname}"
 }

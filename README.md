@@ -25,6 +25,8 @@ universal recipe for
 [user repo](
   https://github.com/themartiancompany/ur).
 
-[PKGBUILD](PKGBUILD)
+[PKGBUILD](
+  PKGBUILD)
 
-[LICENSE](COPYING)
+[LICENSE](
+  COPYING)
