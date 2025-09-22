@@ -82,7 +82,8 @@ _gh_url="${_gh_http}/${_gh_ns}/${_pkg}"
 _gl_url="${_gl_http}/${_gl_ns}/${_pkg}"
 url="${_gh_url}"
 depends=(
-  'ffmpeg'
+  "ffmpeg"
+  "flac"
   "${_py}>=${_pymajver}"
   "${_py}<${_pynextver}"
   "${_py}-appdirs"
