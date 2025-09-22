@@ -161,9 +161,17 @@ package_mkaudiocdrimg() {
   _make_opts=(
     DESTDIR="${pkgdir}"
   )
+  "${_py}" \
+    "setup.py" \
+      install \
+      --root="${pkgdir}" \
+      --optimize=1
   make \
     "${_make_opts[@]}" \
-    install
+    install-doc
+  make \
+    "${_make_opts[@]}" \
+    install-man
   install \
     -vDm644 \
     "COPYING" \
