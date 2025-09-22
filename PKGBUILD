@@ -29,6 +29,9 @@
 #     <dvorak@0x87003Bd6C074C713783df04f36517451fF34CBEf>
 
 # shellcheck disable=SC2034
+_os="$( \
+  uname \
+    -o)"
 _evmfs_available="$( \
   command \
     -v \
@@ -85,6 +88,11 @@ depends=(
   "${_py}-appdirs"
   'shntool'
 )
+if [[ "${_os}" == "Android" ]]; then
+  depends+=(
+    "media-types"
+  )
+fi
 makedepends=(
   "${_py}-setuptools"
 )
