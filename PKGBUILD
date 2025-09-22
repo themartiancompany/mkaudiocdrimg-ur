@@ -29,6 +29,9 @@
 #     <dvorak@0x87003Bd6C074C713783df04f36517451fF34CBEf>
 
 # shellcheck disable=SC2034
+_os="$( \
+  uname \
+    -o)"
 _evmfs_available="$( \
   command \
     -v \
@@ -79,12 +82,18 @@ _gh_url="${_gh_http}/${_gh_ns}/${_pkg}"
 _gl_url="${_gl_http}/${_gl_ns}/${_pkg}"
 url="${_gh_url}"
 depends=(
-  'ffmpeg'
+  "ffmpeg"
+  "flac"
   "${_py}>=${_pymajver}"
   "${_py}<${_pynextver}"
   "${_py}-appdirs"
   'shntool'
 )
+if [[ "${_os}" == "Android" ]]; then
+  depends+=(
+    "media-types"
+  )
+fi
 makedepends=(
   "${_py}-setuptools"
 )
@@ -161,9 +170,14 @@ package_mkaudiocdrimg() {
   _make_opts=(
     DESTDIR="${pkgdir}"
   )
+  "${_py}" \
+    "setup.py" \
+      install \
+      --root="${pkgdir}" \
+      --optimize=1
   make \
     "${_make_opts[@]}" \
-    install
+    install-man
   install \
     -vDm644 \
     "COPYING" \
