@@ -61,7 +61,7 @@ pkgname=(
   "${_pkg}"
 )
 pkgver=1.2.3
-_commit="ebb6be35d133b071338a60a12b7c90eb28fe984b"
+_commit="bdb594bbe39625c6e0e73262f842d3fb4f79c187"
 pkgrel=1
 _pkgdesc=(
   "Make an audio CD-R image"
@@ -102,8 +102,8 @@ conflicts=(
 license=(
   "AGPL3"
 )
-_archive_sum="08ef52d93bfe6c8718adfdc9350b3ba686a684771dd47823256696e657e05c72"
-_archive_sig_sum="54dbf23ad02f5e9e9a981366f232fbbde72c88e8bdf688ec96b5d32a0ec0544a"
+_archive_sum="90546033a0644a6e4ddc4206c860643361d74b56232a1766081a6bbd46133999"
+_archive_sig_sum="6c382fa15197104ebf256596e7eeece21361703f6c0f2071910d596558e51a6a"
 _evmfs_ns="0x87003Bd6C074C713783df04f36517451fF34CBEf"
 if [[ "${_evmfs}" == "true" ]]; then
   _tag="${_commit}"
