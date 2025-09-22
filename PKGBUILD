@@ -168,9 +168,6 @@ package_mkaudiocdrimg() {
       --optimize=1
   make \
     "${_make_opts[@]}" \
-    install-doc
-  make \
-    "${_make_opts[@]}" \
     install-man
   install \
     -vDm644 \
